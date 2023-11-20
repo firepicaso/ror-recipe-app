@@ -1,6 +1,6 @@
 class Inventory < ApplicationRecord
-    belongs_to :user
-    has_many :inventory_foods
+  belongs_to :user
+  has_many :inventory_foods
 
-    validates :name, presence: true
+  validates :name, presence: true
 end
