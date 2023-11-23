@@ -21,7 +21,6 @@ default: &default
   username: postgres
   password: sql
 
-
 development:
   <<: *default
   database: ror_recipe_app_development
@@ -84,4 +83,4 @@ production:
   <<: *default
   database: ror_recipe_app_production
   username: postgres
-  password: <%= ENV["BLOG_DATABASE_PASSWORD"] %>
+  password: mumbere
