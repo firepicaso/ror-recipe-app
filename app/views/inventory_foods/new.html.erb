@@ -1,0 +1,17 @@
+<% if current_user.id == @inventory.user_id %>
+  <h2>Add new food to inventory:</h2>
+  <%= form_with url: inventory_foods_path(inventory_id: @inventory) do |form| %>
+
+      <%= select("food", "food_id", Food.all.collect { |p| [ p.name, p.id ] }, { prompt: 'Select Food' }, required: true) %>
+
+      <div>
+        <%= form.label :quantity %> <br>
+        <%= form.number_field :quantity, class: "form-control" , required: true %>
+      </div>
+
+      <%= form.submit "Create", data: { turbo: false }, class: "btn btn-primary" %>
+  <% end %>
+<% end %>
+<% else %>
+  <p>You are not authorized to add food to this inventory.</p>
+<% end %>
