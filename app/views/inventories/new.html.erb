@@ -1,0 +1,19 @@
+<h2>Add new inventory</h2>
+
+  <%= turbo_frame_tag @inventory do %>
+    <%= form_with model: @inventory do |form| %>
+      <% if @inventory.errors.any? %>
+        <div role="alert">
+          <% @inventory.errors.full_messages.each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      <% end %>
+      <div>
+        <%= form.label :name %>
+        <%= form.text_field :name, class: "form-control" , required: true %>
+      </div>
+
+      <%= form.submit "Create", data: { turbo: false }, class: "btn btn-primary" %>
+    <% end %>
+  <% end %>
