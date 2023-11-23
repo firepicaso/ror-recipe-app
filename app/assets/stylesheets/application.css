@@ -1,15 +1,168 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  form {
+    margin: 20px 0;
+  }
+  
+  .field {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  #error_explanation {
+    color: #f00;
+    margin-top: 20px;
+  }
+  
+  #error_explanation h2 {
+    color: #f00;
+    font-size: 1.2em;
+    font-weight: bold;
+  }
+  
+  #error_explanation ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+  
+  #error_explanation li {
+    margin-bottom: 10px;
+  }
+  
+  .actions {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 12px 24px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #45a049;
+    padding: 20px;
+  }
+  
+  .alert {
+    background-color: #4CAF50;
+    color: white;
+  }
+  
+  
+  @media screen and (max-width: 600px) {
+    input[type="text"] {
+      width: 100%;
+    }
+  }
+  
+  table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  th {
+    background-color: #4caf50;
+    color: #fff;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .card {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  #notice {
+    background-color: #4caf50;
+    color: #fff;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  a {
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  /* Additional styles for show and edit details */
+  .show-details, .edit-details {
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+  }
+  
+  .show-details p, .edit-details p {
+    margin-bottom: 10px;
+  }
+  
+  .show-details strong, .edit-details strong {
+    font-weight: bold;
+    margin-right: 10px;
+  }
+  
+  .delete-btn {
+    background-color: #f44336;
+    color: #fff;
+    padding: 10px 15px;
+    font-size: 1em;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .delete-btn:hover {
+    background-color: #d32f2f;
+  }
+
