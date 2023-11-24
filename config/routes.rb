@@ -1,25 +1,32 @@
 Rails.application.routes.draw do
   devise_for :users
-  # root to: "foods#index"
-  root "foods#index"
-  resources :foods, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-
-  # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.
-  # Can be used by load balancers and uptime monitors to verify that the app is live.
-  # get "up" => "rails/health#show", as: :rails_health_check
+  get '/inventories', to: 'inventories#index'
+  get '/inventories/new', to: 'inventories#new'
+  post '/inventories', to: 'inventories#create'
+  get '/inventories/:id', to: 'inventories#show'
+  delete '/inventories/:id', to: 'inventories#destroy'
+  get '/inventories/:id/inventory_foods/new', to: 'inventory_foods#new'
+  post '/inventories/:id/inventory_foods', to: 'inventory_foods#create'
+  delete '/inventory_foods/:id', to: 'inventory_foods#destroy'
 
   # Defines the root path route ("/")
-  # root "posts#index"
+  root "foods#index"
 
-  resources :inventories, only: [:index, :show, :new, :create, :destroy] do
-    resources :inventory_foods, only: [:new, :create, :destroy]
-  end
+  resources :users
 
   resources :recipes, only: [:index, :new, :create, :show, :update, :destroy] do
     resources :recipe_foods, only: [:new, :create, :edit, :update, :destroy]
   end
-
+  
   resources :public_recipes, only: [:index]
+  
+  resources :inventories, only: [:index, :show, :new, :create, :destroy] do
+    resources :inventory_foods, only: [:new, :create, :destroy]
+  end
+  
+  resources :foods, only: [:index, :new, :create, :show, :edit, :update, :destroy]
+
   resources :general_shopping_list, only: [:index]
 end
