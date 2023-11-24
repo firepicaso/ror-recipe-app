@@ -2,8 +2,8 @@ class CreateInventoryFoods < ActiveRecord::Migration[7.1]
   def change
     create_table :inventory_foods do |t|
       t.integer :quantity
-      t.integer :inventory_id
-      t.integer :food_id
+      t.references :inventory, null: false, foreign_key: true
+      t.references :food, null: false, foreign_key: true
 
       t.timestamps
     end

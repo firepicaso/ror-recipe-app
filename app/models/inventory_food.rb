@@ -1,6 +1,6 @@
 class InventoryFood < ApplicationRecord
-  belongs_to :food
-  belongs_to :inventory
+  belongs_to :food, foreign_key: 'food_id'
+  belongs_to :inventory, foreign_key: 'inventory_id'
 
-  validates :quantity, presence: true, numericality: { only_integer: true, greater_than_or_equal_to: 0 }
+  validates :quantity, presence: true
 end
