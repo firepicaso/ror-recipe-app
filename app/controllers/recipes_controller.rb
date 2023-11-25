@@ -1,11 +1,19 @@
 class RecipesController < ApplicationController
   def index
-    @recipes = current_user.recipes.order(id: :asc)
+    redirect_to public_recipes_path unless current_user
+
+    @recipes = current_user.recipes
   end
 
   def show
-    @recipe = Recipe.find(params[:id])
-    @recipe_foods = RecipeFood.where(recipe_id: params[:id])
+    @recipe = Recipe.includes(:foods).find(params[:id])
+    @user = @recipe.user
+    @recipe_foods = @recipe.recipe_foods.includes(:food)
+    @inventories = if current_user.nil?
+        []
+      else
+        current_user.inventories
+      end
   end
 
   def new
@@ -13,34 +21,28 @@ class RecipesController < ApplicationController
   end
 
   def create
-    @recipe = Recipe.new(recipe_params)
-    @recipe.user = current_user
-    if @recipe.save
-      flash[:success] = 'recipe created successfully!'
-      redirect_to recipes_url
+    redirect_to public_recipes_path unless current_user
+
+    recipe = Recipe.new(recipe_params)
+
+    if recipe.save
+      redirect_to recipe_path(recipe.id), notice: 'recipe successfully created'
     else
-      flash.now[:error] = 'Error: recipe could not be created!'
-      render :new, locals: { recipe: @recipe }
+      redirect_to new_recipe_path, notice: 'recipe could not be created'
     end
   end
 
   def destroy
-    @recipe = Recipe.find(params[:id])
-    @recipe.destroy!
-    flash[:success] = 'Recipe was deleted successfully!'
-    redirect_to recipes_url
+    recipe = Recipe.find(params[:id])
+    recipe.destroy!
+    redirect_to recipes_path, notice: "Recipe #{recipe.name} deleted successfully!"
   end
 
   def update
-    @recipe = Recipe.find(params[:id])
-    if @recipe.public
-      @recipe.update!(public: false)
-      flash[:notice] = 'Recipe status changed to private'
-    else
-      @recipe.update!(public: true)
-      flash[:notice] = 'Recipe status changed to public'
-    end
-    redirect_to recipe_path
+    recipe = Recipe.find(params[:id])
+    recipe.update(public: !recipe.public)
+
+    redirect_to recipe_path(recipe.id), notice: "The recipe is now #{recipe.public ? 'public' : 'private'}!"
   end
 
   def public_recipes
@@ -50,6 +52,6 @@ class RecipesController < ApplicationController
   private
 
   def recipe_params
-    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :user_id, :preparation_time, :cooking_time, :description, :public)
   end
 end

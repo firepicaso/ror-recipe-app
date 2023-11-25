@@ -1,22 +1,23 @@
 class InventoriesController < ApplicationController
-  before_action :authenticate_user!
-  before_action :set_inventory, only: %i[show destroy]
-
   def index
     @inventories = current_user.inventories
   end
 
   def show
+    @inventory = Inventory.find(params[:id])
     @inventory_foods = @inventory.inventory_foods.includes(:food)
-  rescue ActiveRecord::RecordNotFound
-    flash_and_redirect('Inventory not found', inventories_path)
+    rescue Exception => e
+    flash[:notice] = e.message
   end
 
   def destroy
-    @inventory.destroy
-    flash_and_redirect('Inventory was successfully removed', inventories_path)
-  rescue ActiveRecord::RecordNotFound
-    flash_and_redirect('Inventory not found', inventories_path)
+    current_user.inventories.find(params[:id]).destroy
+    flash[:notice] = 'Inventory was successfully removed'
+    splitted_path = request.path.split('/')
+    splitted_path.pop
+    redirect_to splitted_path.join('/')
+    rescue Exception => e
+    flash[:notice] = e.message
   end
 
   def new
@@ -24,32 +25,17 @@ class InventoriesController < ApplicationController
   end
 
   def create
-    inventory = Inventory.new(user: current_user, name: inventory_params[:name])
-
+    inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
     respond_to do |format|
       if inventory.save
-        flash_and_redirect('Created an inventory successfully', inventories_path, format)
+        flash[:notice] = 'Created an inventory succesfully'
+        format.html { redirect_to '/inventories' }
       else
-        flash_and_redirect('Failed to create an inventory. Try again', new_inventory_path, format)
+        flash[:notice] = 'Failed to create an inventory. Try again'
+        format.html { redirect_to '/inventories/new' }
       end
     end
-  rescue StandardError => e
-    flash_and_redirect(e.message, inventories_path)
-  end
-
-  private
-
-  def set_inventory
-    @inventory = current_user.inventories.find(params[:id])
-  end
-
-  def inventory_params
-    params.require(:inventory).permit(:name)
-  end
-
-  def flash_and_redirect(message, path, flash_type = :notice, format = nil)
-    flash[flash_type] = message
-    format&.html { redirect_to path }
-    redirect_to path
+    rescue Exception => e
+      flash[:notice] = e.message
   end
 end
