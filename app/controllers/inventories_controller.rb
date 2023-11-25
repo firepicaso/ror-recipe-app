@@ -17,13 +17,13 @@ class InventoriesController < ApplicationController
   end
 
   def new
-    @new_inventory = Inventory.new
+    @inventory = Inventory.new
   end
 
   def create
-    inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
+    @inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
     respond_to do |format|
-      if inventory.save
+      if @inventory.save
         flash[:notice] = 'Created an inventory succesfully'
         format.html { redirect_to '/inventories' }
       else
