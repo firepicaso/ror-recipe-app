@@ -14,9 +14,6 @@ class InventoryFoodsController < ApplicationController
         format.html { redirect_to "/inventories/#{params[:id]}/inventory_foods/new" }
       end
     end
-    rescue Exception => e
-    flash[:notice] = e.message
-    redirect_to not_found_path
   end
 
   def destroy
@@ -25,9 +22,6 @@ class InventoryFoodsController < ApplicationController
     inventory_food.destroy
     flash[:notice] = 'Inventory food was successfully removed'
     redirect_to "/inventories/#{inventory.id}"
-    rescue Exception => e
-    flash[:notice] = e.message
-    redirect_to not_found_path
   end
 
   private

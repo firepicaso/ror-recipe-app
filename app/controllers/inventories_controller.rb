@@ -6,8 +6,6 @@ class InventoriesController < ApplicationController
   def show
     @inventory = Inventory.find(params[:id])
     @inventory_foods = @inventory.inventory_foods.includes(:food)
-    rescue Exception => e
-    flash[:notice] = e.message
   end
 
   def destroy
@@ -16,8 +14,6 @@ class InventoriesController < ApplicationController
     splitted_path = request.path.split('/')
     splitted_path.pop
     redirect_to splitted_path.join('/')
-    rescue Exception => e
-    flash[:notice] = e.message
   end
 
   def new
@@ -35,7 +31,5 @@ class InventoriesController < ApplicationController
         format.html { redirect_to '/inventories/new' }
       end
     end
-    rescue Exception => e
-      flash[:notice] = e.message
   end
 end
