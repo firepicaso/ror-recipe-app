@@ -1,22 +1,22 @@
 <!-- app/views/foods/show.html.erb -->
 <div class="show-details">
-  <p id="notice"><%= notice %></p>
+  <p id="notice" class="notice"><%= notice %></p>
 
-  <p>
+  <p class="food-detail">
     <strong>Name:</strong>
     <%= @food.name %>
   </p>
 
-  <p>
+  <p class="food-detail">
     <strong>Measurement Unit:</strong>
     <%= @food.measurement_unit %>
   </p>
 
-  <p>
+  <p class="food-detail">
     <strong>Price:</strong>
     <%= number_to_currency(@food.price) %>
   </p>
 
   <%= link_to 'Edit', edit_food_path(@food), class: 'btn btn-primary' %> |
   <%= link_to 'Back', foods_path, class: 'btn btn-secondary' %>
-  
+</div>
