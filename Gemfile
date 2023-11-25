@@ -61,6 +61,12 @@ group :development do
   # gem "spring"
 end
 
+group :test do
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+end
+
 gem 'rubocop', '>= 1.0', '< 2.0'
 
 gem 'devise', '~> 4.9'
