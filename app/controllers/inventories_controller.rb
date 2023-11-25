@@ -1,35 +1,46 @@
 class InventoriesController < ApplicationController
+  load_and_authorize_resource
+
   def index
-    @inventories = current_user.inventories
+    @inventories = Inventory.all
+  end
+
+  def new
+    @inventory = Inventory.new
+  end
+
+  def create
+    @inventory = current_user.inventories.new(inventory_params)
+
+    respond_to do |format|
+      if @inventory.save
+        format.html { redirect_to inventories_path, notice: 'Inventory created successfully.' }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def destroy
+    @inventory = Inventory.find(params[:id])
+    authorize! :destroy, @inventory
+    @inventory.destroy!
+
+    respond_to do |format|
+      format.html { redirect_to inventories_url, notice: 'Inventory removed successfully.' }
+    end
   end
 
   def show
     @inventory = Inventory.find(params[:id])
-    @inventory_foods = @inventory.inventory_foods.includes(:food)
+    @foods = @inventory.inventory_foods.includes(:food)
+    @foody = Food.all
+    @inventory_food = InventoryFood.new
   end
 
-  def destroy
-    current_user.inventories.find(params[:id]).destroy
-    flash[:notice] = 'Inventory was successfully removed'
-    splitted_path = request.path.split('/')
-    splitted_path.pop
-    redirect_to splitted_path.join('/')
-  end
+  private
 
-  def new
-    @new_inventory = Inventory.new
-  end
-
-  def create
-    inventory = Inventory.new(user: current_user, name: params[:inventory][:name])
-    respond_to do |format|
-      if inventory.save
-        flash[:notice] = 'Created an inventory succesfully'
-        format.html { redirect_to '/inventories' }
-      else
-        flash[:notice] = 'Failed to create an inventory. Try again'
-        format.html { redirect_to '/inventories/new' }
-      end
-    end
+  def inventory_params
+    params.require(:inventory).permit(:name, :description)
   end
 end

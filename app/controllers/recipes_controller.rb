@@ -1,19 +1,8 @@
 class RecipesController < ApplicationController
+  before_action :set_recipe, only: %i[show destroy]
+
   def index
-    redirect_to public_recipes_path unless current_user
-
     @recipes = current_user.recipes
-  end
-
-  def show
-    @recipe = Recipe.includes(:foods).find(params[:id])
-    @user = @recipe.user
-    @recipe_foods = @recipe.recipe_foods.includes(:food)
-    @inventories = if current_user.nil?
-                     []
-                   else
-                     current_user.inventories
-                   end
   end
 
   def new
@@ -21,37 +10,51 @@ class RecipesController < ApplicationController
   end
 
   def create
-    redirect_to public_recipes_path unless current_user
+    @recipe = current_user.recipes.new(recipe_params)
 
-    recipe = Recipe.new(recipe_params)
-
-    if recipe.save
-      redirect_to recipe_path(recipe.id), notice: 'recipe successfully created'
-    else
-      redirect_to new_recipe_path, notice: 'recipe could not be created'
+    respond_to do |format|
+      if @recipe.save
+        format.html { redirect_to recipes_url, notice: 'Recipe Added successfully.' }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    recipe = Recipe.find(params[:id])
-    recipe.destroy!
-    redirect_to recipes_path, notice: "Recipe #{recipe.name} deleted successfully!"
+    @recipe.destroy
+    authorize! :destroy, @recipe
+
+    respond_to do |format|
+      format.html { redirect_to recipes_url, notice: 'Recipe removed successfully.' }
+    end
+  end
+
+  def show
+    @foods = current_user.foods
+    @inventories = Inventory.all
+    @recipe = current_user.recipes.includes(:recipe_foods).find(params[:id])
+    @recipes = Recipe.find(params[:id])
   end
 
   def update
-    recipe = Recipe.find(params[:id])
-    recipe.update(public: !recipe.public)
-
-    redirect_to recipe_path(recipe.id), notice: "The recipe is now #{recipe.public ? 'public' : 'private'}!"
-  end
-
-  def public_recipes
-    @recipes = Recipe.where(public: true).order(id: :desc)
+    @recipe = Recipe.find(params[:id])
+    if @recipe.public
+      @recipe.update(public: false)
+      flash.now[:notice] = 'Status changed to private.'
+    else
+      @recipe.update(public: true)
+      flash.now[:notice] = 'Status changed to public'
+    end
   end
 
   private
 
+  def set_recipe
+    @recipe = Recipe.find(params[:id])
+  end
+
   def recipe_params
-    params.require(:recipe).permit(:name, :user_id, :preparation_time, :cooking_time, :description, :public)
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
   end
 end

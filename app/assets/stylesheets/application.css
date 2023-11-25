@@ -1,290 +1,541 @@
-body {
-  font-family: 'Arial', sans-serif;
+* {
   margin: 0;
   padding: 0;
-  background-color: #f8f9fa;
-}
-
-.container {
-  max-width: 1200px;
-  margin: 20px auto;
-  padding: 20px;
   box-sizing: border-box;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Specific Containers */
-#recipe_details,
-#recipe_actions,
-#recipe_foods,
-.card-deck,
-#recipes_container,
-.add-inventory-container,
-.show-details,
-.new-food-title,
-.edit-food-title {
-  margin-bottom: 20px;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-/* Button Styles */
-.btn {
-  display: inline-block;
-  padding: 8px 16px;
-  margin-bottom: 10px;
-  font-size: 16px;
-  text-align: center;
-  text-decoration: none;
-  cursor: pointer;
-  border: none;
-  border-radius: 4px;
-}
-
-.btn-info {
-  background-color: #17a2b8;
-  color: #fff;
-}
-
-.btn-success {
-  background-color: #28a745;
-  color: #fff;
-}
-
-.btn-primary {
-  background-color: #007bff;
-  color: #fff;
-}
-
-.btn-danger {
-  background-color: #dc3545;
-  color: #fff;
-}
-
-/* Table Styles */
-.table {
+body {
+  height: 100vh;
   width: 100%;
-  border-collapse: collapse;
+  font-family: 'Quicksand', sans-serif;
+  background: url("https://images.pexels.com/photos/260922/pexels-photo-260922.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1") no-repeat center;
+  background-size: cover;
 }
 
-th,
-td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
-}
-
-/* Table Head Styles */
-.thead-light th {
-  background-color: #f8f9fa;
-}
-
-/* Flash Notice Styles */
-.flash-notice {
-  margin-bottom: 20px;
-  background-color: #d4edda;
-  color: #155724;
-  border: 1px solid #c3e6cb;
-  border-radius: 4px;
-  padding: 15px;
-}
-
-/* List Styles */
-.list-unstyled {
+ul {
   list-style: none;
-  padding: 0;
 }
 
-/* Ingredient Styles */
-.ingredient {
-  border-bottom: 1px solid #ddd;
-  padding: 10px 0;
-}
-
-.food-quantity,
-.food-name {
-  font-weight: bold;
-}
-
-/* Food Table Styles */
-.food-table {
+.auth-forms {
+  position: relative;
   width: 100%;
-  margin-top: 20px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px 100px;
 }
 
-.food-table th,
-.food-table td {
-  padding: 12px;
-  text-align: left;
-  border-bottom: 1px solid #ddd;
+.auth-forms::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-size: cover;
+  filter: blur(50px);
+  z-index: -1;
 }
 
-.food-table thead th {
-  background-color: #f8f9fa;
-}
-
-/* No Foods Message Styles */
-.no-foods-message {
-  color: #6c757d;
-}
-
-/* Add Food Button Styles */
-.add-food-btn {
-  margin-top: 20px;
-}
-
-/* Form Styles */
-form {
-  max-width: 400px;
+.form-box {
+  color: #e0e0e0;
+  max-width: 1000px;
   margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  box-shadow: 0 0 19px 5px rgba(0, 0, 0, 0.19);
+  border-radius: 4%;
+  background: url("https://media.istockphoto.com/id/1309605836/photo/izmir-kofte-turkish-dish-of-spicy-meatballs.jpg?s=1024x1024&w=is&k=20&c=ZXFLf7oJCLyQNXaRTy8QlS8xro9OhjCmyW2VQARNBq0=") no-repeat center;
+  background-color: #fff;
+  background-size: cover;
 }
 
-/* Error Message Styles */
-#error_explanation {
-  color: #dc3545;
-  margin-bottom: 15px;
+.left {
+  background-size: cover;
+  height: 100%;
 }
 
-/* Individual Error Message Styles */
-#error_explanation h2 {
-  font-size: 18px;
+.right {
+  padding: 40px;
+}
+
+h2 {
+  position: relative;
+  padding: 0 0 10px;
   margin-bottom: 10px;
+  color: blue;
+  border: 2px solid white;
 }
 
-#error_explanation ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
-#error_explanation li {
-  margin-bottom: 5px;
-}
-
-/* Form Field and Label Styles */
-.field {
-  margin-bottom: 15px;
-}
-
-.field label {
-  display: block;
-  font-size: 14px;
-  margin-bottom: 5px;
+h2::after {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 4px;
+  width: 50px;
+  border-radius: 2px;
+  background-color: #2ecc71;
 }
 
 .field input {
   width: 100%;
-  padding: 8px;
-  font-size: 14px;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  box-sizing: border-box;
+  border: 2px solid rgba(0, 0, 0, 0);
+  outline: none;
+  background-color: rgba(230, 230, 230, 0.6);
+  padding: 0.5rem 1rem;
+  font-size: 1.1rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
 }
 
-/* Form Action Styles */
-.actions {
-  margin-top: 15px;
+.field input:hover {
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
-.actions input {
-  background-color: #007bff;
+.remember-me {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 7px;
+  margin-bottom: 22px;
+}
+
+.actions input[type="submit"] {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  background-color: blue;
   color: #fff;
-  padding: 10px;
-  font-size: 16px;
+  font-size: 1.1rem;
   border: none;
-  border-radius: 4px;
+  outline: none;
   cursor: pointer;
+  transition: 0.3s;
+  margin-bottom: 22px;
 }
 
-/* Center Titles (h1, h2, h3) */
-h1,
-h2,
-h3 {
-  text-align: center;
+.actions input[type="submit"]:hover {
+  background-color: #27ae60;
 }
 
-/* Responsive Styles */
-@media only screen and (max-width: 600px) {
-  .container {
+.field input:focus {
+  border: 2px solid rgba(30, 85, 250, 0.47);
+  background-color: #fff;
+}
+
+.left-food {
+  height: 100%;
+}
+
+.left-recipe {
+  height: 100%;
+}
+
+.left-inventory {
+  height: 100%;
+}
+
+.field textarea {
+  color: #ccc;
+  width: 100%;
+  border: 2px solid rgba(233, 228, 228, 0);
+  outline: none;
+  padding: 0.5rem 1rem;
+  font-size: 1.5rem;
+  margin-bottom: 22px;
+  transition: 0.3s;
+}
+
+.field textarea:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  color: white;
+}
+
+@media screen and (max-width: 880px) {
+  .form-box {
+    grid-template-columns: 1fr;
+  }
+
+  .left,
+  .left-food,
+  .left-recipe,
+  .left-inventory {
+    height: 50px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .auth-forms {
     padding: 10px;
   }
 
-  .btn {
-    width: 100%;
-  }
-
-  .food-table th,
-  .food-table td {
-    font-size: 14px;
-  }
-
-  form {
+  .form-box {
     max-width: 100%;
+  }
+
+  .left,
+  .left-food,
+  .left-recipe,
+  .left-inventory {
+    height: 150px;
+    align-items: center;
+  }
+
+  .right {
+    padding: 15px;
   }
 }
 
-/* styles.css */
+.navbar {
+  background-color: #131012;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: static;
+}
 
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f5f5f5;
+.navbar ul {
+  list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-.container {
-  width: 80%;
-  margin: 0 auto;
+.navbar li {
+  display: inline;
+  margin-right: 10px;
 }
 
-.foods-title {
-  color: #333;
+td a {
+  color: red;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+}
+
+.user-options ul {
+  display: flex;
+}
+
+.hero {
+  padding: 20px;
+  margin-bottom: 20px;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.hero h1 {
+  font-size: 3rem;
   text-align: center;
+  color: #fff;
 }
 
-.foods-table {
-  width: 100%;
+.hero > a {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.recipe-buttons a {
+  background-color: #2ecc71;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 1.5rem;
+  transition: 0.3s;
+}
+
+.public-recipe-link a {
+  text-decoration: none;
+  color: #000;
+}
+
+.inventory a {
+  text-decoration: none;
+  color: black;
+}
+
+.hero > a:hover {
+  background-color: #27ae60;
+}
+
+.hero p {
+  font-size: 1.5rem;
+  text-align: center;
+  color: #fff;
+}
+
+table {
   border-collapse: collapse;
+  width: 80%;
   margin-top: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+thead {
+  background-color: #27ae60;
+  color: #fff;
 }
 
 th,
 td {
-  border: 1px solid #ddd;
-  padding: 12px;
+  padding: 12px 15px;
   text-align: left;
 }
 
-th {
-  background-color: #4caf50;
-  color: white;
+tbody tr:nth-child(odd) {
+  background-color: #f2f2f2;
 }
 
-.actions-header,
-.delete-btn {
+tbody tr:hover {
+  background-color: #e0e0e0;
+}
+
+.recipe-list {
+  display: grid;
+  gap: 2rem;
+}
+
+.recipe-list li {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+  margin: 0 5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.recipe-list li:hover {
+  transform: scale(1.02);
+}
+
+li div {
+  display: grid;
+  gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .recipe-list li {
+    margin: 0 2rem;
+  }
+
+  li div {
+    grid-template-columns: 1fr;
+  }
+}
+
+.hero h3 {
+  font-size: 2rem;
   text-align: center;
 }
 
-.show-link,
-.edit-link,
-.delete-btn,
-.new-food-link {
-  display: inline-block;
-  padding: 8px 16px;
-  margin: 5px;
-  text-decoration: none;
-  background-color: #4235eb;
-  color: white;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
+.recipes {
+  margin-top: 2rem;
+  display: flex;
+  align-items: center;
+  flex-direction: row-reverse;
+  justify-content: space-between;
+  gap: 3rem;
 }
 
-.show-link:hover,
-.edit-link:hover,
-.delete-btn:hover,
-.new-food-link:hover {
-  background-color: #45a049;
+.recipe-public {
+  display: flex;
+  align-items: center;
+}
+
+.recipe-details {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2rem;
+}
+
+.recipe-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.recipe-buttons a:hover {
+  background-color: #27ae60;
+}
+
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 16px;
+  background-color: #f8f8f8;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.modal h2 {
+  text-align: center;
+}
+
+.overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+  backdrop-filter: blur(5px);
+}
+
+.modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.modal.active,
+.overlay.active {
+  display: block;
+}
+
+.open-modal-btn {
+  cursor: pointer;
+  text-decoration: underline;
+  color: #007bff;
+}
+
+.body-modal-open {
+  overflow: hidden;
+}
+
+.shopping {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+}
+
+.shopping h1 {
+  font-size: 3rem;
+  text-align: center;
+  color: #fff;
+}
+
+.shopping-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+}
+
+.shopping-details div {
+  display: grid;
+  gap: 2rem;
+}
+
+.inventory-modal {
+  display: none;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 60%;
+  max-width: 400px;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.inventory-modal h2 {
+  text-align: center;
+}
+
+.inventory-modal span {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 20px;
+  cursor: pointer;
+  color: #333;
+}
+
+.inventory-modal.active {
+  display: block;
+}
+
+.public-recipe {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  justify-content: space-between;
+  gap: 2rem;
+  padding: 2rem;
+  width: 302px;
+  margin: 0 5rem;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+.public-recipe:hover {
+  transform: scale(1.02);
+}
+
+.public-recipe p {
+  font-size: 16px;
+}
+
+.public-recipe h3 {
+  font-size: 22px;
+}
+
+.recipe-item + p {
+  font-size: 16px;
+}
+
+.recipe-item h3 {
+  font-size: 22px;
 }

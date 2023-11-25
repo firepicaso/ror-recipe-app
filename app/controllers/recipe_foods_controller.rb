@@ -1,50 +1,30 @@
 class RecipeFoodsController < ApplicationController
-  def index
-    @recipe_food = RecipeFood.new
-  end
-
-  def new
-    @recipe = Recipe.find(params[:recipe_id])
-    @recipe_food = RecipeFood.new
-    @foods = current_user.foods.select { |food| @recipe.foods.exclude?(food) }
-  end
-
-  def edit
-    @recipe_food = RecipeFood.find(params[:id])
-    @foods = current_user.foods.reject { |food| food.id == @recipe_food.food_id }
-  end
-
   def create
-    recipe_food = RecipeFood.new(recipe_food_params)
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = @recipe.recipe_foods.new(recipe_food_params)
 
-    if recipe_food.save
-      redirect_to recipe_path(recipe_food.recipe_id), notice: 'Ingedients was added successfully'
-    else
-      flash[:alert] = 'Failed creating ingredient'
-      redirect_back(fallback_location: root_path)
+    respond_to do |format|
+      if @recipe_food.save!
+        format.html { redirect_to recipe_path(@recipe), notice: 'Ingredient added successfully.' }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+      end
     end
   end
 
   def destroy
-    recipe_food = RecipeFood.find(params[:id])
-    recipe_food.destroy
+    @recipe_food = RecipeFood.find(params[:id])
+    authorize! :destroy, @recipe_food
+    @recipe_food.destroy!
 
-    redirect_to recipe_path(recipe_food.recipe_id), notice: 'Ingredient was deleted successfully!'
-  end
-
-  def update
-    recipe_food = RecipeFood.find(params[:id])
-
-    if recipe_food.update(recipe_food_params)
-      redirect_to recipe_path(recipe_food.recipe_id), notice: 'Ingredient was edited successfully!'
-    else
-      redirect_to recipe_path(recipe_food.recipe_id), alert: 'Error! Ingredient was not edited'
+    respond_to do |format|
+      format.html { redirect_to recipe_url, notice: 'Ingredient removed successfully.' }
     end
   end
 
   private
 
   def recipe_food_params
-    params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity)
+    params.require(:recipe_foods).permit(:food_id, :quantity)
   end
 end

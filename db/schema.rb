@@ -15,17 +15,18 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_071832) do
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
-    t.string "name"
+    t.string "food"
     t.string "measurement_unit"
-    t.decimal "price"
-    t.bigint "user_id"
+    t.integer "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "inventories", force: :cascade do |t|
     t.string "name"
+    t.text "description"
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,9 +34,10 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_071832) do
   end
 
   create_table "inventory_foods", force: :cascade do |t|
-    t.integer "quantity"
+    t.bigint "quantity"
     t.bigint "inventory_id", null: false
     t.bigint "food_id", null: false
+    t.integer "user"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["food_id"], name: "index_inventory_foods_on_food_id"
@@ -57,7 +59,7 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_071832) do
     t.decimal "preparation_time"
     t.decimal "cooking_time"
     t.string "description"
-    t.boolean "public"
+    t.boolean "public", default: true
     t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -73,11 +75,6 @@ ActiveRecord::Schema[7.1].define(version: 2023_11_24_071832) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "confirmation_token"
-    t.datetime "confirmed_at"
-    t.datetime "confirmation_sent_at"
-    t.string "unconfirmed_email"
-    t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end

@@ -1,22 +1,19 @@
-<div class="add-inventory-container">
-  <h2>Add new inventory</h2>
-
-  <%= turbo_frame_tag @inventory do %>
-    <%= form_with model: @inventory do |form| %>
-      <% if @inventory.errors.any? %>
-        <div role="alert" class="error-messages">
-          <% @inventory.errors.full_messages.each do |message| %>
-            <div class="error-message"><%= message %></div>
-          <% end %>
+<section class="auth-forms">
+  <div class="form-box">
+    <div class="left-inventory"></div>
+    <div class="right">
+      <h2>Add New Inventory</h2>
+      <%= form_with(model: @inventory) do |f| %>
+        <div class="field">
+          <%= f.text_field :name, placeholder: "Inventory Name", autofocus: true, required: true %>
+        </div>
+        <div class="field">
+          <%= f.text_area :description, placeholder: "Type here the inventory description", required: true %>
+        </div>
+        <div class="actions">
+          <%= f.submit "Add Inventory" %>
         </div>
       <% end %>
-
-      <div class="form-group">
-        <%= form.label :name, class: "form-label" %>
-        <%= form.text_field :name, class: "form-control", required: true %>
-      </div>
-
-      <%= form.submit "Create", data: { turbo: false }, class: "btn btn-primary" %>
-    <% end %>
-  <% end %>
-</div>
+    </div>
+  </div>
+</section>

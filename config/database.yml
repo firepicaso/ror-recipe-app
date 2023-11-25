@@ -83,4 +83,4 @@ production:
   <<: *default
   database: ror_recipe_app_production
   username: postgres
-  password: mumbere
+  password: sql
