@@ -18,12 +18,6 @@
         <td><%= food.measurement_unit %></td>
         <td><%= food.price %></td>
         <td>
-          <%= link_to 'Show', food, class: 'show-link' %>
-        </td>
-        <td>
-          <%= link_to 'Edit', edit_food_path(food), class: 'edit-link' %>
-        </td>
-        <td>
           <%= button_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure you want to delete this food item?' }, class: 'delete-btn' %>
         </td>
       </tr>

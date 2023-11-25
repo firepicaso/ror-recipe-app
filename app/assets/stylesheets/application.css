@@ -288,3 +288,23 @@ th {
 .new-food-link:hover {
   background-color: #45a049;
 }
+
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.nav-list {
+  display: flex;
+  gap: 10px;
+}
+
+a {
+  list-style-type: none;
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 600;
+}

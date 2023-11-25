@@ -1,0 +1,36 @@
+<nav class="navbar my-navbar">
+  <div class="my-navbar-collapse collapse order-1 order-md-0 dual-collapse2">
+    <ul class="navbar-list">
+      <li class="nav-item active">
+        <%= link_to "Foods", foods_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Inventories", inventories_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Recipes", recipes_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Public Recipes", public_recipes_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Public Recipes", public_recipes_path, class: "nav-link" %>
+      </li>
+    </ul>
+  </div>
+  <div class="mx-auto order-0">
+    <%= link_to "RorRecipeApp", root_path, class: "nav-link my-logo" %>
+    <button class="navbar-toggler my-toggler" type="button" data-target=".dual-collapse2">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </div>
+  <div class="my-navbar-collapse collapse order-3 dual-collapse2">
+    <ul class="navbar-list ms-auto">
+      <% if current_user %>
+        <li><%= link_to 'Logout', destroy_user_session_path, method: :delete, class: "nav-link" %></li>
+      <% else %>
+        <li><%= link_to 'Login', new_user_session_path, class: "nav-link" %></li>
+      <% end %>
+    </ul>
+  </div>
+</nav>
