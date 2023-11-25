@@ -10,7 +10,7 @@ body {
   margin: 20px auto;
   padding: 20px;
   box-sizing: border-box;
-  background-color: #ffffff;
+  background-color: #fff;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
@@ -25,7 +25,7 @@ body {
 .new-food-title,
 .edit-food-title {
   margin-bottom: 20px;
-  background-color: #ffffff;
+  background-color: #fff;
   padding: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
@@ -69,7 +69,8 @@ body {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -113,7 +114,8 @@ th, td {
   margin-top: 20px;
 }
 
-.food-table th, .food-table td {
+.food-table th,
+.food-table td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
@@ -197,7 +199,9 @@ form {
 }
 
 /* Center Titles (h1, h2, h3) */
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   text-align: center;
 }
 
@@ -211,7 +215,8 @@ h1, h2, h3 {
     width: 100%;
   }
 
-  .food-table th, .food-table td {
+  .food-table th,
+  .food-table td {
     font-size: 14px;
   }
 
@@ -245,22 +250,27 @@ body {
   margin-top: 20px;
 }
 
-th, td {
+th,
+td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: left;
 }
 
 th {
-  background-color: #4CAF50;
+  background-color: #4caf50;
   color: white;
 }
 
-.actions-header, .delete-btn {
+.actions-header,
+.delete-btn {
   text-align: center;
 }
 
-.show-link, .edit-link, .delete-btn, .new-food-link {
+.show-link,
+.edit-link,
+.delete-btn,
+.new-food-link {
   display: inline-block;
   padding: 8px 16px;
   margin: 5px;
@@ -272,6 +282,9 @@ th {
   cursor: pointer;
 }
 
-.show-link:hover, .edit-link:hover, .delete-btn:hover, .new-food-link:hover {
+.show-link:hover,
+.edit-link:hover,
+.delete-btn:hover,
+.new-food-link:hover {
   background-color: #45a049;
 }

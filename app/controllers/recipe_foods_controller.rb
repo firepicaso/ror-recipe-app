@@ -3,41 +3,48 @@ class RecipeFoodsController < ApplicationController
     @recipe_food = RecipeFood.new
   end
 
+  def new
+    @recipe = Recipe.find(params[:recipe_id])
+    @recipe_food = RecipeFood.new
+    @foods = current_user.foods.select { |food| @recipe.foods.exclude?(food) }
+  end
+
   def edit
     @recipe_food = RecipeFood.find(params[:id])
+    @foods = current_user.foods.reject { |food| food.id == @recipe_food.food_id }
   end
 
   def create
-    @recipe_food = RecipeFood.new(recipe_food_params)
-    @recipe_food.recipe_id = params[:recipe_id]
-    if @recipe_food.save
-      flash[:success] = 'Ingredient added successfully!'
-      redirect_to recipe_path(params[:recipe_id])
+    recipe_food = RecipeFood.new(recipe_food_params)
+
+    if recipe_food.save
+      redirect_to recipe_path(recipe_food.recipe_id), notice: 'Ingedients was added successfully'
     else
-      flash.now[:error] = 'Error: ingredient could not be added!'
-      render :new, locals: { recipe_food: @recipe_food }
+      flash[:alert] = 'Failed creating ingredient'
+      redirect_back(fallback_location: root_path)
     end
   end
 
   def destroy
-    @recipe_food = RecipeFood.find(params[:id])
-    @recipe_food.destroy!
-    flash[:success] = 'Ingredient was deleted successfully!'
-    redirect_to recipe_path(@recipe_food.recipe_id)
+    recipe_food = RecipeFood.find(params[:id])
+    recipe_food.destroy
+
+    redirect_to recipe_path(recipe_food.recipe_id), notice: 'Ingredient was deleted successfully!'
   end
 
   def update
-    @recipe_food = RecipeFood.find(params[:id])
-    if @recipe_food.update(recipe_food_params)
-      flash[:notice] = 'Ingredient updated successfully!'
-      redirect_to recipe_path(params[:recipe_id])
+    recipe_food = RecipeFood.find(params[:id])
+
+    if recipe_food.update(recipe_food_params)
+      redirect_to recipe_path(recipe_food.recipe_id), notice: 'Ingredient was edited successfully!'
     else
-      flash.now[:error] = 'Error: ingredient could not be updated!'
-      render :edit, locals: { recipe_food: @recipe_food }
+      redirect_to recipe_path(recipe_food.recipe_id), alert: 'Error! Ingredient was not edited'
     end
   end
 
+  private
+
   def recipe_food_params
-    params.require(:recipe_food).permit(:quantity, :food_id)
+    params.require(:recipe_food).permit(:recipe_id, :food_id, :quantity)
   end
 end

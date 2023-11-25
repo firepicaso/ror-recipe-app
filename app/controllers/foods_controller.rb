@@ -1,42 +1,42 @@
 # app/controllers/foods_controller.rb
 class FoodsController < ApplicationController
-  before_action :set_food, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   def index
     @foods = Food.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @food = Food.new
   end
 
   def create
-    @food = Food.new(food_params)
+    @food = current_user.foods.new(food_params)
+    # @food = Food.new(food_params)
 
-    if @food.save
-      redirect_to @food, notice: 'Food was successfully created.'
-    else
-      render :new
+    respond_to do |format|
+      if @food.save
+        format.html { redirect_to foods_url, notice: 'Food was successfully created.' }
+        format.json { render :show, status: :created, location: @food }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @food.errors, status: :unprocessable_entity }
+      end
     end
   end
 
-  def edit
-  end
-
-  def update
-    if @food.update(food_params)
-      redirect_to @food, notice: 'Food was successfully updated.'
-    else
-      render :edit
-    end
-  end
+  def edit; end
 
   def destroy
+    @food = Food.find(params[:id])
     @food.destroy
-    redirect_to foods_url, notice: 'Food was successfully destroyed.'
+
+    respond_to do |format|
+      format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
+      format.json { head :no_content }
+    end
   end
 
   private
