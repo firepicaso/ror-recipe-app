@@ -1,171 +1,277 @@
 body {
   font-family: 'Arial', sans-serif;
-  background-color: #f8f8f8;
-  color: #333;
+  margin: 0;
+  padding: 0;
+  background-color: #f8f9fa;
 }
 
 .container {
-  max-width: 800px;
+  max-width: 1200px;
   margin: 20px auto;
   padding: 20px;
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-form {
-  margin: 20px 0;
-}
-
-.field {
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-input[type="text"] {
-  width: 100%;
-  padding: 10px;
   box-sizing: border-box;
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  background-color: #ffffff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-#error_explanation {
-  color: #f00;
-  margin-top: 20px;
+/* Specific Containers */
+#recipe_details,
+#recipe_actions,
+#recipe_foods,
+.card-deck,
+#recipes_container,
+.add-inventory-container,
+.show-details,
+.new-food-title,
+.edit-food-title {
+  margin-bottom: 20px;
+  background-color: #ffffff;
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
-#error_explanation h2 {
-  color: #f00;
-  font-size: 1.2em;
-  font-weight: bold;
-}
-
-#error_explanation ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-#error_explanation li {
+/* Button Styles */
+.btn {
+  display: inline-block;
+  padding: 8px 16px;
   margin-bottom: 10px;
-}
-
-.actions {
+  font-size: 16px;
   text-align: center;
-  margin-top: 20px;
-}
-
-input[type="submit"] {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 12px 24px;
-  font-size: 1em;
+  text-decoration: none;
+  cursor: pointer;
   border: none;
   border-radius: 4px;
-  cursor: pointer;
 }
 
-input[type="submit"]:hover {
-  background-color: #45a049;
-  padding: 20px;
+.btn-info {
+  background-color: #17a2b8;
+  color: #fff;
 }
 
-.alert {
-  background-color: #4caf50;
-  color: white;
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
 }
 
-
-@media screen and (max-width: 600px) {
-  input[type="text"] {
-    width: 100%;
-  }
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
 }
 
-table {
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* Table Styles */
+.table {
   width: 100%;
-  margin-top: 20px;
   border-collapse: collapse;
 }
 
-th,
-td {
+th, td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
 
-th {
-  background-color: #4caf50;
-  color: #fff;
+/* Table Head Styles */
+.thead-light th {
+  background-color: #f8f9fa;
 }
 
-h1 {
-  text-align: center;
+/* Flash Notice Styles */
+.flash-notice {
+  margin-bottom: 20px;
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 15px;
 }
 
-.card {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
-  margin-top: 20px;
+/* List Styles */
+.list-unstyled {
+  list-style: none;
+  padding: 0;
 }
 
-#notice {
-  background-color: #4caf50;
-  color: #fff;
-  padding: 10px;
-  text-align: center;
+/* Ingredient Styles */
+.ingredient {
+  border-bottom: 1px solid #ddd;
+  padding: 10px 0;
 }
 
-a {
-  color: #4caf50;
-  text-decoration: none;
+.food-quantity,
+.food-name {
   font-weight: bold;
 }
 
-a:hover {
-  text-decoration: underline;
-}
-
-/* Additional styles for show and edit details */
-.show-details,
-.edit-details {
-  background-color: #fff;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-  padding: 20px;
+/* Food Table Styles */
+.food-table {
+  width: 100%;
   margin-top: 20px;
 }
 
-.show-details p,
-.edit-details p {
+.food-table th, .food-table td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.food-table thead th {
+  background-color: #f8f9fa;
+}
+
+/* No Foods Message Styles */
+.no-foods-message {
+  color: #6c757d;
+}
+
+/* Add Food Button Styles */
+.add-food-btn {
+  margin-top: 20px;
+}
+
+/* Form Styles */
+form {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+/* Error Message Styles */
+#error_explanation {
+  color: #dc3545;
+  margin-bottom: 15px;
+}
+
+/* Individual Error Message Styles */
+#error_explanation h2 {
+  font-size: 18px;
   margin-bottom: 10px;
 }
 
-.show-details strong,
-.edit-details strong {
-  font-weight: bold;
-  margin-right: 10px;
+#error_explanation ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
-.delete-btn {
-  background-color: #f44336;
+#error_explanation li {
+  margin-bottom: 5px;
+}
+
+/* Form Field and Label Styles */
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 5px;
+}
+
+.field input {
+  width: 100%;
+  padding: 8px;
+  font-size: 14px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Form Action Styles */
+.actions {
+  margin-top: 15px;
+}
+
+.actions input {
+  background-color: #007bff;
   color: #fff;
-  padding: 10px 15px;
-  font-size: 1em;
+  padding: 10px;
+  font-size: 16px;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
-.delete-btn:hover {
-  background-color: #d32f2f;
+/* Center Titles (h1, h2, h3) */
+h1, h2, h3 {
+  text-align: center;
+}
+
+/* Responsive Styles */
+@media only screen and (max-width: 600px) {
+  .container {
+    padding: 10px;
+  }
+
+  .btn {
+    width: 100%;
+  }
+
+  .food-table th, .food-table td {
+    font-size: 14px;
+  }
+
+  form {
+    max-width: 100%;
+  }
+}
+
+/* styles.css */
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f5f5f5;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.foods-title {
+  color: #333;
+  text-align: center;
+}
+
+.foods-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+th {
+  background-color: #4CAF50;
+  color: white;
+}
+
+.actions-header, .delete-btn {
+  text-align: center;
+}
+
+.show-link, .edit-link, .delete-btn, .new-food-link {
+  display: inline-block;
+  padding: 8px 16px;
+  margin: 5px;
+  text-decoration: none;
+  background-color: #4235eb;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.show-link:hover, .edit-link:hover, .delete-btn:hover, .new-food-link:hover {
+  background-color: #45a049;
 }
