@@ -1,29 +1,34 @@
-<!-- app/views/foods/index.html.erb -->
-<h1 class="foods-title">Foods</h1>
+<section class="hero">
+    <h1>Food List</h1>
+    <%= link_to 'Add Food', new_food_path %>
 
-<table class="foods-table">
-  <thead>
-    <tr>
-      <th class="name-header">Name</th>
-      <th class="measurement-unit-header">Measurement Unit</th>
-      <th class="price-header">Price</th>
-      <th colspan="3" class="actions-header"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @foods.each do |food| %>
+  <% if @foods.empty? %>
+    <p>Please add foods using the Add Food button</p>
+  <% else %>
+  <table>
+    <thead>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
-        <td>
-          <%= button_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure you want to delete this food item?' }, class: 'delete-btn' %>
-        </td>
+        <th>Food</th>
+        <th>Measurement Unit</th>
+        <th>Unit Price</th>
+        <th>Actions</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
-<br>
+    </thead>
 
-<%= link_to 'New Food', new_food_path, class: 'new-food-link' %>
+    <tbody>
+      <% @foods.each do |food| %>
+        <tr>
+          <td><%= food.food %></td>
+          <td><%= food.measurement_unit %></td>
+          <td>$<%= food.price %></td>
+          <td>
+            <% if can? :destroy, food %>
+              <%= link_to 'Delete', food, data: { turbo_method: :delete, turbo_confirm: 'You are about to delete this food! Do you want to continue?' }, type:"button" %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <% end %>
+</section>
