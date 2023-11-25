@@ -1,6 +1,6 @@
 <!-- app/views/foods/new.html.erb -->
-<h1>New Food</h1>
+<h1 class="new-food-title">New Food</h1>
 
 <%= render 'form', food: @food %>
 
-<%= link_to 'Back', foods_path %>
+<%= link_to 'Back', foods_path, class: 'back-link' %>
