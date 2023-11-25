@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe Food, type: :model do
   it 'is valid with valid attributes' do
     user = User.create(name: 'Tom', email: 'tom@example.com', password: 'password')
-    food = Food.new(food: 'Apple', measurement_unit: 'kg', price: 12, user: user)
+    food = Food.new(food: 'Apple', measurement_unit: 'kg', price: 12, user:)
     expect(food).to be_valid
   end
 
