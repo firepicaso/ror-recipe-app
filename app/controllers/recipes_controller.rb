@@ -23,7 +23,7 @@ class RecipesController < ApplicationController
   def create
     redirect_to public_recipes_path unless current_user
 
-    recipe = Recipe.new(recipe_params)
+    recipe = current_user.recipes.new(recipe_params)
 
     if recipe.save
       redirect_to recipe_path(recipe.id), notice: 'recipe successfully created'
