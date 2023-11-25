@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   belongs_to :user
   has_many :recipe_foods, foreign_key: :recipe_id, dependent: :destroy
 
-  validates :name, :preparation_time, :cooking_time, :description, presence: true
+  validates :name, :preparation_time, :cooking_time, presence: true
 
   def self.calculate_total_amount(recipe)
     total_amount = 0
