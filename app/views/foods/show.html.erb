@@ -1,22 +1,25 @@
-<!-- app/views/foods/show.html.erb -->
-<div class="show-details">
-  <p id="notice"><%= notice %></p>
+<section class="auth-forms">
+  <div class="form-box">
+    <div class="left-food"></div>
+    <div class="right">
+      <h2>Add Food</h2>
+      <%= form_with(model: @food) do |f| %>
+        <div class="field">
+          <%= f.text_field :food, placeholder: "Food name", autofocus: true, required: true %>
+        </div>
 
-  <p>
-    <strong>Name:</strong>
-    <%= @food.name %>
-  </p>
+        <div class="field">
+          <%= f.text_field :measurement_unit, placeholder: "Measurement unit", required: true %>
+        </div>
 
-  <p>
-    <strong>Measurement Unit:</strong>
-    <%= @food.measurement_unit %>
-  </p>
-
-  <p>
-    <strong>Price:</strong>
-    <%= number_to_currency(@food.price) %>
-  </p>
-
-  <%= link_to 'Edit', edit_food_path(@food), class: 'btn btn-primary' %> |
-  <%= link_to 'Back', foods_path, class: 'btn btn-secondary' %>
-  
+        <div class="field">
+          <%= f.text_field :price, placeholder: "Unit price", required: true %>
+        </div>
+        
+        <div class="actions">
+          <%= f.submit "Add Food" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</section>
