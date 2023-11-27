@@ -1,10 +1,22 @@
-<p style="color: green"><%= notice %></p>
+<!-- app/views/foods/show.html.erb -->
+<div class="show-details">
+  <p id="notice"><%= notice %></p>
 
-<%= render @food %>
+  <p>
+    <strong>Name:</strong>
+    <%= @food.name %>
+  </p>
 
-<div>
-  <%= link_to "Edit this food", edit_food_path(@food) %> |
-  <%= link_to "Back to foods", foods_path %>
+  <p>
+    <strong>Measurement Unit:</strong>
+    <%= @food.measurement_unit %>
+  </p>
 
-  <%= button_to "Destroy this food", @food, method: :delete %>
-</div>
+  <p>
+    <strong>Price:</strong>
+    <%= number_to_currency(@food.price) %>
+  </p>
+
+  <%= link_to 'Edit', edit_food_path(@food), class: 'btn btn-primary' %> |
+  <%= link_to 'Back', foods_path, class: 'btn btn-secondary' %>
+  
