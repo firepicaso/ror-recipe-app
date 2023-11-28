@@ -1,0 +1,26 @@
+<!-- app/views/layouts/application.html.erb -->
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your App Name</title>
+  <!-- Add your stylesheet link tags or any other head content here -->
+</head>
+<body>
+
+<nav>
+  <ul>
+    <li><%= link_to 'Home', root_path %></li>
+    <li><%= link_to 'Foods', foods_path %></li>
+    <li><%= link_to 'New Food', new_food_path %></li>
+    <!-- Add other menu items as needed -->
+    <% if user_signed_in? %>
+      <li><%= link_to 'General Shopping List', general_shopping_list_user_path(current_user) %></li>
+    <% end %>
+  </ul>
+</nav>
+
+<%= yield %>
+
+</body>
+</html>
