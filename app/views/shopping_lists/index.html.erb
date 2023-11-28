@@ -1,0 +1,11 @@
+
+
+<h1>Shopping List</h1>
+
+<p>Total Price: <%= @total_price %></p>
+
+<ul>
+  <% @missing_numbers.each do |food_name, missing_quantity| %>
+    <li><%= "#{food_name}: #{missing_quantity}" %></li>
+  <% end %>
+</ul>
