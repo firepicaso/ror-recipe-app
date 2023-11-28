@@ -1,2 +1,5 @@
+# app/helpers/foods_helper.rb
 module FoodsHelper
-end
+    # Your helper methods can go here if needed
+  end
+  

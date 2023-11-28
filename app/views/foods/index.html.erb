@@ -1,32 +1,36 @@
+\<h1 class="mt-4 mb-4 text-center">Food List</h1>
 
-<h1>Foods</h1>
+<%= link_to "Add Food", new_food_path, class: "btn btn-success mb-4" %>
 
-<table>
-  <thead>
+<table class="table">
+  <thead class="thead-light">
     <tr>
       <th>Name</th>
       <th>Measurement Unit</th>
+      <th>Quantity</th>
       <th>Price</th>
-      <th>User</th>
-      <th colspan="3"></th>
+      <th>Action</th>
     </tr>
   </thead>
-
-  <tbody>
-    <% @foods.each do |food| %>
+  <% if @foodlist.present? %>
+    <tbody>
+      <% @foodlist.each do |food| %>
+        <tr>
+          <td><%= food.name %></td>
+          <td><%= food.measurement_unit %></td>
+          <td><%= food.quantity %></td>
+          <td><%= food.price %></td>
+          <td>
+            <%= button_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <tbody>
       <tr>
-        <td><%= food.name %></td>
-        <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
-        <td><%= food.user.name %></td>
-        <td><%= link_to 'Show', food %></td>
-        <td><%= link_to 'Edit', edit_food_path(food) %></td>
-        <td><%= link_to 'Destroy', food, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td colspan="5">No food items available.</td>
       </tr>
-    <% end %>
-  </tbody>
+    </tbody>
+  <% end %>
 </table>
-
-<br>
-
-<%= link_to 'New Food', new_food_path %>
