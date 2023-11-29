@@ -11,7 +11,6 @@ class ShoppingListsController < ApplicationController
       missing_quantity = user_food ? [total_quantity_required - user_food.quantity, 0].max : total_quantity_required
       @missing_numbers[food_name] = missing_quantity
 
-
       custom_formula_result = missing_quantity * ingredients.first.food.price * 1.2
 
       custom_formula_result
