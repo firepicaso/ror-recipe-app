@@ -70,7 +70,8 @@ Rails.application.configure do
   # Use a real queuing backend for Active Job (and separate queues per environment).
   # config.active_job.queue_adapter = :resque
   # config.active_job.queue_name_prefix = "ror_recipe_app_production"
-
+  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  
   config.action_mailer.perform_caching = false
 
   # Ignore bad email addresses and do not raise email delivery errors.
