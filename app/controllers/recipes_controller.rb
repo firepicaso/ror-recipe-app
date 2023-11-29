@@ -1,7 +1,7 @@
 class RecipesController < ApplicationController
   load_and_authorize_resource
 
-  before_action :set_recipe, only: [:show, :destroy, :update]
+  before_action :set_recipe, only: %i[show destroy update]
 
   def index
     @recipes = current_user.recipes.order(id: :asc)
