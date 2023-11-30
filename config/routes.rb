@@ -22,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   
-  rresources :recipes, only: [:index, :new, :create, :show, :update, :destroy] do
+  resources :recipes, only: [:index, :new, :create, :show, :update, :destroy] do
     resources :recipe_foods
   end
 
