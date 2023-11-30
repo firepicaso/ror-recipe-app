@@ -1,15 +1,14 @@
-<!-- app/views/foods/index.html.erb -->
-<h1>Your Food List</h1>
+<h1 class="mt-4 mb-4 text-center">Food List</h1>
 
-<%= link_to 'New Food', new_food_path, class: 'btn btn-primary' %>
+<%= link_to "Add Food", new_food_path, class: "btn btn-success mb-4" %>
 
 <table class="table">
-  <thead>
+  <thead class="thead-light">
     <tr>
       <th>Name</th>
       <th>Measurement Unit</th>
-      <th>Price</th>
       <th>Quantity</th>
+      <th>Price</th>
       <th>Action</th>
     </tr>
   </thead>
@@ -18,10 +17,10 @@
       <tr>
         <td><%= food.name %></td>
         <td><%= food.measurement_unit %></td>
-        <td><%= food.price %></td>
         <td><%= food.quantity %></td>
+        <td><%= food.price %></td>
         <td>
-          <%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= button_to "Delete", food_path(food), method: :delete, data: { confirm: "Are you sure?" }, class: "btn btn-danger" %>
         </td>
       </tr>
     <% end %>

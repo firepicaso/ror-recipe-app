@@ -1,0 +1,24 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <%= link_to "Recipe App", '/public_recipes', class: "navbar-brand" %>
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <div class="navbar-nav">
+      <% if user_signed_in? %>
+        <%= link_to "Foods", foods_path, class: "nav-item nav-link mr-2" %>
+        <%= link_to "Recipes", recipes_path, class: "nav-item nav-link mr-2" %>
+        <%= link_to "Public Recipes", '/public_recipes', class: "nav-item nav-link mr-2" %>
+        <%= link_to "Shopping List", '/shopping_lists', class: "nav-item nav-link ms-1" %>
+        <%= button_to "Log Out", destroy_user_session_path, method: :delete, class: "nav-item nav-link btn btn-outline-danger ms-1" %>
+      <% else %>
+        <% unless user_signed_in? %>
+          <%= link_to "Sign In", new_user_session_path, class: "nav-item nav-link btn btn-primary text-white" %>
+          <%= link_to "Sign Up", new_user_registration_path, class: "nav-item nav-link btn btn-success ms-1 text-white" %>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</nav>
