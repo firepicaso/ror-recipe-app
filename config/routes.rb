@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   get '/public_recipes', to: 'recipes#public_recipes', as: 'public_recipes'
 
   # Defines the root path route ("/")
-  root "foods#index"
+  # root "foods#index"
 
   devise_scope :user do
     authenticated :user do
