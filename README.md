@@ -25,7 +25,7 @@
 
 # 📖 Recipe App <a name="about-project"></a>
 
-The **Recipe app** keeps track of all your recipes, ingredients, and inventory. It will allow you to save ingredients, keep track of what you have, create recipes, and generate a shopping list based on what you have and what you are missing from a recipe. Also, since sharing recipes is an important part of cooking the app should allow you to make them public so anyone can access them.
+The application is designed to meticulously manage your recipes, ingredients, and inventory. It empowers you to save ingredients, monitor your stock, formulate recipes, and automatically generate a shopping list based on both your existing supplies and the required ingredients for a chosen recipe. Moreover, recognizing the significance of sharing recipes in the culinary experience, the app provides the functionality to make your recipes public, enabling easy access for anyone interested.
 
 ## 🛠 Built With <a name="built-with"></a>
 
@@ -136,12 +136,6 @@ Open [http://localhost:1080](http://localhost:1080) to view it in your browser.
 
 - GitHub: [@githubhandle](https://github.com/firepicaso)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mustakim-masum/)
-
-👤 **Albert Antwi**
-
-- GitHub: [@githubhandle](https://github.com/albertkantwi)
-- Twitter: [@twitterhandle](https://twitter.com/Albert_KAntwi)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/albert-antwi-557291263/)
 
 👤 **Mumbere Habert**
 - GitHub: [mumbereh](https://github.com/mumbereh)
