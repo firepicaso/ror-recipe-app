@@ -14,17 +14,22 @@ RSpec.describe Food, type: :model do
   end
 
   it 'is not valid without a name' do
-    food = Food.new(measurement_unit: 'kg', price: 5)
+    food = Food.new(measurement_unit: 'kg', price: 5, quantity: 1)
     expect(food).not_to be_valid
   end
 
   it 'is not valid without a measurement unit' do
-    food = Food.new(name: 'apple', price: 5)
+    food = Food.new(name: 'apple', price: 5, quantity: 1)
     expect(food).not_to be_valid
   end
 
   it 'is not valid without a price' do
-    food = Food.new(name: 'apple', measurement_unit: 'kg')
+    food = Food.new(name: 'apple', measurement_unit: 'kg', quantity: 1)
+    expect(food).not_to be_valid
+  end
+
+  it 'is not valid without a quantity' do
+    food = Food.new(name: 'apple', measurement_unit: 'kg', price: 5)
     expect(food).not_to be_valid
   end
 end
