@@ -1,15 +1,226 @@
-/*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS (and SCSS, if configured) file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
+/* Reset styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Global styles */
+body {
+  height: 100vh;
+  width: 100%;
+  font-family: 'Arial', sans-serif;
+  background-size: cover;
+}
+
+/* Navbar styles */
+.navbar {
+  background-color: #131012;
+  padding: 20px;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: static;
+}
+
+.navbar ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.navbar li {
+  margin-right: 10px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  margin-right: 15px;
+  position: relative;
+  transition: 0.3s;
+}
+
+.navbar a:hover {
+  text-decoration: underline;
+}
+
+/* Container styles */
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 50px;
+}
+
+/* Button styles */
+.btn-food,
+.btn-danger,
+.btn-primary,
+.btn-success,
+.btn-last {
+  display: inline-block;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.btn-food,
+.btn-success {
+  margin-bottom: 20px;
+}
+
+.btn-success {
+  padding: 10px 15px;
+  font-size: 16px;
+  font-weight: bold;
+  text-decoration: none;
+  color: #fff;
+}
+
+.btn-food {
+  background-color: #28a745;
+  border: 1px solid #28a745;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+  color: #fff;
+  border: 1px solid #dc3545;
+  padding: 6px 12px;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+  border: 1px solid #c82333;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+  border: 1px solid #007bff;
+  padding: 8px 16px;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border: 1px solid #0056b3;
+}
+
+.btn-last {
+  background-color: #dc3545;
+  color: #fff;
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+/* Table styles */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid #dee2e6;
+}
+
+th {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Form styles */
+.form,
+.form-box {
+  max-width: 500px;
+  margin: 20px auto;
+  background-color: #fff;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.form-group,
+.field {
+  margin-bottom: 20px;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 6px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+}
+
+/* Header styles */
+h1,
+h2 {
+  text-align: center;
+  color: #007bff;
+}
+
+h2 {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+}
+
+/* Card styles */
+.card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-title {
+  font-size: 1.8rem;
+  margin-bottom: 10px;
+  color: #333;
+}
+
+.card-text {
+  color: #555;
+}
+
+.card-footer {
+  background-color: #f8f9fa;
+  border-top: 1px solid #ccc;
+  padding: 15px 20px;
+}
+
+/* Text styles */
+.text-end {
+  text-align: left;
+}
+
+/* Spacing styles */
+.mb-4 {
+  margin-bottom: 1.5rem;
+  justify-content: center;
+}
+
+/* Responsive styles */
+@media (max-width: 767px) {
+  .container {
+    padding: 10px;
+  }
+}
