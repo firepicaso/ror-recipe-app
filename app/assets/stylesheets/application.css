@@ -189,7 +189,7 @@ label {
 h1,
 h2 {
   text-align: center;
-  color: #007bff;
+  color: #070b10;
 }
 
 h2 {
@@ -203,6 +203,12 @@ h2 {
   border-radius: 8px;
   overflow: hidden;
   margin-bottom: 20px;
+}
+
+.card-deck {
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
 
 .card-body {
@@ -235,6 +241,16 @@ h2 {
 .mb-4 {
   margin-bottom: 1.5rem;
   justify-content: center;
+}
+
+.public-recipe {
+  margin-top: 1rem;
+}
+
+.precipe-body {
+  display: flex;
+  padding: 1rem 5rem;
+  gap: 2rem;
 }
 
 /* Responsive styles */
