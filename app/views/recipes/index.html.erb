@@ -1,0 +1,31 @@
+<div class="container">
+  <h1 class="mt-4 mb-4 text-center">My Recipes</h1>
+  
+  <% if can? :create, Recipe %>
+    <%= link_to 'Add Recipe', new_recipe_path, class: 'btn btn-success mb-4' %>
+  <% end %>
+
+  <ul id="recipes_container" class="list-unstyled">
+    <% @recipes.each_with_index do |recipe, i| %>
+      <li class="card mb-4">
+        <%= link_to "/recipes/#{recipe.id}" do %>
+          <div class="card-body">
+            <h2 class="card-title"><%= recipe.name %></h2>
+          </div>
+        <% end %>
+
+        <% if can? :destroy, recipe %>
+          <%= form_with model: recipe, url: recipe_path(recipe), method: :delete, class: 'd-inline' do |f| %>
+            <div class="card-footer text-end">
+              <%= f.submit "REMOVE", class: 'btn-last' %>
+            </div>
+          <% end %>
+        <% end %>
+
+        <div class="card-body">
+          <p class="card-text mb-0"><%= truncate(recipe.description, length: 100, omission: '...') %></p>
+        </div>
+      </li>
+    <% end %>
+  </ul>
+</div>
