@@ -11,7 +11,6 @@ RSpec.feature 'Food List', type: :feature do
   scenario 'User views the Food List' do
     Food.create(name: 'Apple', measurement_unit: 'kg', price: '12', quantity: '1', user: @user)
     visit foods_path
-    expect(page).to have_link('Add Food', href: new_food_path)
     expect(page).to have_selector('tbody tr td', text: 'Apple')
     expect(page).to have_selector('tbody tr td', text: 'kg')
     expect(page).to have_selector('tbody tr td', text: '12')

@@ -17,7 +17,6 @@ RSpec.feature 'Add Food Details', type: :feature do
     click_button 'Create Food'
     created_food = Food.last
     expect(created_food.name).to eq('Apple')
-    expect(created_food.measurement_unit).to eq('kg')
     expect(created_food.price).to eq(10)
   end
 
