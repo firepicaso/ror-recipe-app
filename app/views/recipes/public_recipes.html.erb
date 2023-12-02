@@ -3,10 +3,11 @@
 
   <div class="card-deck">
     <% @recipes.includes([:user]).includes([:recipe_foods]).each do |recipe| %>
-      <div class="card mb-4">
+      <div class="card mb-4 precipe-body">
         <div class="card-body">
           <%= link_to "/recipes/#{recipe.id}" do %>
-            <h5 class="card-title"><%= recipe.name %> by <%= recipe.user.name %></h5>
+            <h5 class="card-title"><%= recipe.name %></h5>
+            <h5 class="card-title">by: <%= recipe.user.name %></h5>
           <% end %>
 
           <% if can? :destroy, recipe %>
@@ -14,7 +15,8 @@
               <%= f.submit "REMOVE", class: "btn-danger" %>
             <% end %>
           <% end %>
-
+        </div>
+        <div class="card-body">
           <p class="card-text">Total food items: <%= recipe.recipe_foods.length %></p>
           <p class="card-text">Total price: <%= recipe.recipe_foods.sum { |recipe_food| recipe_food.food.price * recipe_food.quantity} %></p>
         </div>
